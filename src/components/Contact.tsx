@@ -26,14 +26,14 @@ export default function Contact() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-14 flex items-center gap-4"
+        className="mb-16 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">06</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Connect</span>
       </motion.div>
 
-      <div className="grid gap-16 lg:grid-cols-5">
+      <div className="grid gap-16 lg:grid-cols-5 lg:gap-20">
         {/* Left — 2 cols */}
         <div className="lg:col-span-2 flex flex-col justify-between">
           <div>
@@ -54,7 +54,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="mt-6 text-muted leading-relaxed text-[15px]"
+              className="mt-8 text-muted leading-relaxed text-[15px]"
             >
               Have a project in mind or want to collaborate? I&apos;m always open to
               discussing new opportunities, innovation, and building impactful
@@ -67,7 +67,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mt-10 space-y-5"
+            className="mt-12 space-y-6"
           >
             <a
               href="mailto:girishnegi@example.com"
@@ -106,13 +106,13 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="card-premium lg:col-span-3 p-7 sm:p-9"
+          className="card-premium lg:col-span-3 p-8 sm:p-10"
         >
-          <div className="space-y-5">
+          <div className="space-y-6">
             {/* Name & Email row */}
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="name" className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-muted">
+                <label htmlFor="name" className="mb-2.5 block text-[11px] font-semibold uppercase tracking-widest text-muted">
                   Name
                 </label>
                 <input
@@ -126,7 +126,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-muted">
+                <label htmlFor="email" className="mb-2.5 block text-[11px] font-semibold uppercase tracking-widest text-muted">
                   Email
                 </label>
                 <input
@@ -143,13 +143,13 @@ export default function Contact() {
 
             {/* Message */}
             <div>
-              <label htmlFor="message" className="mb-2 block text-[11px] font-semibold uppercase tracking-widest text-muted">
+              <label htmlFor="message" className="mb-2.5 block text-[11px] font-semibold uppercase tracking-widest text-muted">
                 Message
               </label>
               <textarea
                 id="message"
                 required
-                rows={5}
+                rows={6}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full resize-none rounded-xl border border-border/40 bg-surface-light/30 px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted/30 focus:border-accent/40 focus:ring-2 focus:ring-accent/10 focus:bg-surface-light/50"
@@ -163,7 +163,7 @@ export default function Contact() {
               disabled={status === "sending"}
               whileHover={{ scale: 1.01 }}
               whileTap={{ scale: 0.99 }}
-              className={`group w-full rounded-xl py-3.5 text-sm font-semibold transition-all duration-300 ${
+              className={`group w-full rounded-xl py-4 text-sm font-semibold transition-all duration-300 ${
                 status === "sent"
                   ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
                   : "bg-gradient-to-r from-accent to-purple-600 text-white shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 disabled:opacity-60"

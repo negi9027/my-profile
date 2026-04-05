@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-screen items-center justify-center overflow-hidden"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
     >
       {/* Animated gradient background */}
       <div className="animated-gradient absolute inset-0" />
@@ -52,14 +52,14 @@ export default function Hero() {
       {/* Content */}
       <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 flex flex-col items-center text-center px-6 pt-20"
+        className="relative z-10 flex flex-col items-center text-center px-6 sm:px-8"
       >
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-border/50 bg-surface/50 px-5 py-2 text-xs font-medium text-muted backdrop-blur-sm"
+          className="mb-12 inline-flex items-center gap-2.5 rounded-full border border-border/50 bg-surface/50 px-5 py-2.5 text-xs font-medium text-muted backdrop-blur-sm"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
@@ -73,7 +73,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+          className="max-w-5xl text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           I Build{" "}
           <span className="gradient-text">Digital</span>
@@ -86,7 +86,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="mt-8 max-w-2xl text-base text-muted sm:text-lg md:text-xl font-light leading-relaxed"
+          className="mt-12 max-w-2xl text-base text-muted sm:text-lg md:text-xl font-light leading-relaxed"
         >
           <span className="whitespace-nowrap">Automation Engineer</span>
           <span className="mx-2.5 text-border">·</span>
@@ -103,7 +103,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-5"
+          className="mt-16 flex flex-col gap-4 sm:flex-row sm:gap-5"
         >
           <a
             href="#projects"
@@ -146,7 +146,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Bottom gradient transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent" />
     </section>
   );
 }

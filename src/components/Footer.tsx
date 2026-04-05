@@ -38,7 +38,7 @@ export default function Footer() {
       {/* Subtle top glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
 
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-6 py-14 sm:flex-row">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 px-6 py-16 sm:flex-row">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

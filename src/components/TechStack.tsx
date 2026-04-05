@@ -52,14 +52,14 @@ export default function TechStack() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-14 flex items-center gap-4"
+        className="mb-16 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">04</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Technologies</span>
       </motion.div>
 
-      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-14">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function TechStack() {
       </div>
 
       {/* Categorized Grid */}
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-8 sm:grid-cols-2">
         {categories.map((cat, catIdx) => (
           <motion.div
             key={cat.label}
@@ -89,9 +89,9 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: catIdx * 0.08, duration: 0.5 }}
-            className="card-premium p-6"
+            className="card-premium p-7"
           >
-            <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
+            <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.2em] text-muted">
               {cat.label}
             </h3>
             <div className="flex flex-wrap gap-3">

@@ -70,14 +70,14 @@ export default function Skills() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-14 flex items-center gap-4"
+        className="mb-16 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">02</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Expertise</span>
       </motion.div>
 
-      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-14">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function Skills() {
       </div>
 
       {/* Skills Grid — clean 3-col on desktop, 2-col tablet, 1-col mobile */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {skillCategories.map((cat, i) => (
           <motion.div
             key={cat.title}
@@ -107,13 +107,13 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            className="card-premium group relative overflow-hidden p-6"
+            className="card-premium group relative overflow-hidden p-7"
           >
             {/* Subtle gradient glow on hover */}
             <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500`} />
 
             {/* Header */}
-            <div className="relative flex items-center gap-3.5 mb-5">
+            <div className="relative flex items-center gap-3.5 mb-6">
               <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${cat.color} text-white shadow-lg shadow-black/10`}>
                 {cat.icon}
               </div>
@@ -121,7 +121,7 @@ export default function Skills() {
             </div>
 
             {/* Skill Tags */}
-            <div className="relative flex flex-wrap gap-2">
+            <div className="relative flex flex-wrap gap-2.5">
               {cat.skills.map((skill) => (
                 <span
                   key={skill}

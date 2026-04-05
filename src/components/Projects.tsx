@@ -48,14 +48,14 @@ export default function Projects() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-14 flex items-center gap-4"
+        className="mb-16 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">03</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Work</span>
       </motion.div>
 
-      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-14">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function Projects() {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2">
         {projects.map((project, i) => (
           <motion.article
             key={project.title}
@@ -110,11 +110,11 @@ export default function Projects() {
             </div>
 
             {/* Content */}
-            <div className="relative p-6">
-              <h3 className="mb-2 text-lg font-semibold tracking-tight group-hover:text-accent transition-colors duration-300">
+            <div className="relative p-7">
+              <h3 className="mb-3 text-lg font-semibold tracking-tight group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="mb-5 text-sm text-muted leading-relaxed line-clamp-2">
+              <p className="mb-6 text-sm text-muted leading-relaxed line-clamp-2">
                 {project.description}
               </p>
 

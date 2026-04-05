@@ -37,7 +37,7 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-14 flex items-center gap-4"
+          className="mb-16 flex items-center gap-4"
         >
           <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
             01
@@ -48,7 +48,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        <div className="grid gap-12 lg:grid-cols-5 lg:gap-20 items-start">
+        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-20 items-center">
           {/* Image Side — 2 cols */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -84,7 +84,7 @@ export default function About() {
           </motion.div>
 
           {/* Story Side — 3 cols */}
-          <div className="flex flex-col gap-10 lg:col-span-3 lg:pt-2">
+          <div className="flex flex-col gap-10 lg:col-span-3">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function About() {
               I&apos;m a full-stack engineer who bridges the gap between elegant interfaces and robust infrastructure. Every solution I build balances form with function.
             </motion.p>
 
-            <div className="space-y-8 mt-2">
+            <div className="space-y-10 mt-4">
               {storyPoints.map((point, i) => (
                 <motion.div
                   key={point.title}

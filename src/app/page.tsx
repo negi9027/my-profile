@@ -12,15 +12,17 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <TechStack />
-      <Experience />
-      <Contact />
+      <div className="space-y-0">
+        <About />
+        <Skills />
+        <Projects />
+        <TechStack />
+        <Experience />
+        <Contact />
+      </div>
       <Footer />
     </main>
   );
