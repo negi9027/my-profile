@@ -17,53 +17,92 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Track active section
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    navLinks.forEach((link) => {
+      const el = document.querySelector(link.href);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "glass shadow-lg shadow-black/5"
+            ? "glass shadow-lg shadow-black/10"
             : "bg-transparent"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           {/* Logo */}
-          <a href="#" className="relative z-10">
-            <motion.span
-              className="text-xl font-bold tracking-tight"
+          <a href="#" className="relative z-10 flex items-center gap-2.5">
+            <motion.div
               whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2.5"
             >
-              <span className="gradient-text">GN</span>
-              <span className="text-foreground/60 ml-1 text-sm font-light hidden sm:inline">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-purple-600 text-sm font-bold text-white shadow-lg shadow-accent/20">
+                GN
+              </div>
+              <span className="hidden text-sm font-medium text-foreground/70 sm:block">
                 Girish Negi
               </span>
-            </motion.span>
+            </motion.div>
           </a>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden items-center gap-0.5 rounded-full border border-border/40 bg-surface/50 px-1.5 py-1 backdrop-blur-sm md:flex">
             {navLinks.map((link) => (
-              <motion.a
+              <a
                 key={link.href}
                 href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-foreground/60 transition-colors hover:text-foreground"
-                whileHover={{ y: -1 }}
+                className={`relative rounded-full px-4 py-1.5 text-[13px] font-medium transition-all duration-300 ${
+                  activeSection === link.href
+                    ? "text-foreground"
+                    : "text-muted hover:text-foreground"
+                }`}
               >
-                {link.label}
-              </motion.a>
+                {activeSection === link.href && (
+                  <motion.div
+                    layoutId="nav-active"
+                    className="absolute inset-0 rounded-full bg-surface-light"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
+              </a>
             ))}
+          </div>
 
+          <div className="hidden items-center gap-3 md:flex">
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="ml-4 flex h-9 w-9 items-center justify-center rounded-full border border-border/50 text-foreground/60 transition-all hover:text-foreground hover:border-foreground/20"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border/40 text-muted transition-all hover:text-foreground hover:border-border hover:bg-surface-light"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
@@ -76,22 +115,30 @@ export default function Navbar() {
                 </svg>
               )}
             </button>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="rounded-full bg-foreground px-5 py-2 text-[13px] font-medium text-background transition-all hover:opacity-90 hover:shadow-lg"
+            >
+              Let&apos;s Talk
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden relative z-10 flex h-9 w-9 items-center justify-center"
+            className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-border/30 md:hidden"
             aria-label="Toggle menu"
           >
-            <div className="relative w-5 h-4">
-              <span className={`absolute left-0 top-0 h-[1.5px] w-5 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 top-[7px]" : ""}`} />
-              <span className={`absolute left-0 top-[7px] h-[1.5px] w-5 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`absolute left-0 bottom-0 h-[1.5px] w-5 bg-foreground transition-all duration-300 ${mobileOpen ? "-rotate-45 bottom-[7px]" : ""}`} />
+            <div className="relative w-4 h-3.5">
+              <span className={`absolute left-0 top-0 h-[1.5px] w-4 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 top-[6px]" : ""}`} />
+              <span className={`absolute left-0 top-[6px] h-[1.5px] w-4 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0 scale-0" : ""}`} />
+              <span className={`absolute left-0 bottom-0 h-[1.5px] w-4 bg-foreground transition-all duration-300 ${mobileOpen ? "-rotate-45 bottom-[6px]" : ""}`} />
             </div>
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -101,7 +148,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 glass flex flex-col items-center justify-center gap-6 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-1 md:hidden"
+            style={{ background: "rgba(5,5,5,0.95)", backdropFilter: "blur(32px)" }}
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -111,8 +159,8 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: i * 0.05, duration: 0.3 }}
-                className="text-2xl font-light text-foreground/80 hover:text-foreground transition-colors"
+                transition={{ delay: i * 0.06, duration: 0.3 }}
+                className="w-64 rounded-2xl px-6 py-4 text-center text-lg font-light text-foreground/80 transition-colors hover:bg-surface-light hover:text-foreground"
               >
                 {link.label}
               </motion.a>
@@ -121,8 +169,8 @@ export default function Navbar() {
               onClick={toggleTheme}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="mt-4 text-sm text-foreground/40 border border-border/30 px-4 py-2 rounded-full"
+              transition={{ delay: 0.4 }}
+              className="mt-6 rounded-full border border-border/30 px-6 py-2.5 text-sm text-muted"
             >
               {theme === "dark" ? "Light Mode" : "Dark Mode"}
             </motion.button>

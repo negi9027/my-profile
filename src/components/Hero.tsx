@@ -11,7 +11,7 @@ export default function Hero() {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
 
   return (
     <section
@@ -21,55 +21,59 @@ export default function Hero() {
       {/* Animated gradient background */}
       <div className="animated-gradient absolute inset-0" />
 
+      {/* Noise texture */}
+      <div className="noise absolute inset-0" />
+
       {/* Grid pattern overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* Radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/5 blur-[120px]" />
+      {/* Central radial glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent/8 blur-[150px]" />
 
       {/* Floating orbs */}
       <motion.div
         animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-[20%] right-[15%] w-72 h-72 rounded-full bg-gradient-to-br from-accent/10 to-purple-500/10 blur-[80px]"
+        className="absolute top-[15%] right-[10%] w-80 h-80 rounded-full bg-gradient-to-br from-accent/8 to-purple-600/8 blur-[100px]"
       />
       <motion.div
         animate={{ y: [20, -20, 20], x: [10, -10, 10] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-[20%] left-[10%] w-96 h-96 rounded-full bg-gradient-to-tr from-pink-500/8 to-accent/8 blur-[100px]"
+        className="absolute bottom-[15%] left-[5%] w-96 h-96 rounded-full bg-gradient-to-tr from-pink-500/6 to-accent/6 blur-[120px]"
       />
 
       {/* Content */}
       <motion.div
         style={{ y, opacity, scale }}
-        className="relative z-10 flex flex-col items-center text-center px-6"
+        className="relative z-10 flex flex-col items-center text-center px-6 pt-20"
       >
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 px-4 py-1.5 text-xs font-medium text-muted"
+          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-border/50 bg-surface/50 px-5 py-2 text-xs font-medium text-muted backdrop-blur-sm"
         >
-          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
           Available for new projects
         </motion.div>
 
         {/* Main Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-4xl text-5xl font-bold leading-[1.1] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="max-w-5xl text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           I Build{" "}
           <span className="gradient-text">Digital</span>
@@ -79,41 +83,42 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-6 max-w-xl text-lg text-muted sm:text-xl md:mt-8 md:text-2xl font-light leading-relaxed"
+          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-8 max-w-2xl text-base text-muted sm:text-lg md:text-xl font-light leading-relaxed"
         >
           <span className="whitespace-nowrap">Automation Engineer</span>
-          {" · "}
+          <span className="mx-2.5 text-border">·</span>
           <span className="whitespace-nowrap">Web Developer</span>
-          {" · "}
+          <span className="mx-2.5 text-border">·</span>
           <span className="whitespace-nowrap">AI Tools Expert</span>
-          {" · "}
+          <span className="mx-2.5 text-border hidden sm:inline">·</span>
+          <br className="sm:hidden" />
           <span className="whitespace-nowrap">Security & Server Specialist</span>
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-5"
+          initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="mt-12 flex flex-col gap-4 sm:flex-row sm:gap-5"
         >
           <a
             href="#projects"
-            className="group relative inline-flex h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-foreground px-8 text-sm font-medium text-background transition-transform hover:scale-105 active:scale-[0.98]"
+            className="group relative inline-flex h-13 items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-r from-accent to-purple-600 px-8 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-xl hover:shadow-accent/30 hover:scale-[1.03] active:scale-[0.98]"
           >
-            View Work
-            <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
+            <span className="relative z-10 flex items-center gap-2.5">
+              View Work
+              <svg className="h-4 w-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </span>
           </a>
           <a
             href="#contact"
-            className="inline-flex h-12 items-center justify-center rounded-full border border-border/60 px-8 text-sm font-medium text-foreground/80 transition-all hover:border-foreground/30 hover:text-foreground hover:scale-105 active:scale-[0.98]"
+            className="group inline-flex h-13 items-center justify-center rounded-full border border-border/60 bg-surface/30 px-8 text-sm font-medium text-foreground/80 backdrop-blur-sm transition-all duration-300 hover:border-foreground/20 hover:bg-surface-light/50 hover:text-foreground hover:scale-[1.03] active:scale-[0.98]"
           >
             Contact Me
           </a>
@@ -123,20 +128,25 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-muted/60">
+        <span className="text-[10px] uppercase tracking-[0.3em] text-muted/50 font-medium">
           Scroll
         </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="h-8 w-[1px] bg-gradient-to-b from-muted/40 to-transparent"
-        />
+        <div className="relative h-10 w-[1px]">
+          <motion.div
+            animate={{ y: [0, 16, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-0 h-4 w-[1px] bg-gradient-to-b from-accent/60 to-transparent"
+          />
+          <div className="h-full w-[1px] bg-border/30" />
+        </div>
       </motion.div>
+
+      {/* Bottom gradient transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent" />
     </section>
   );
 }

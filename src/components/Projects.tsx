@@ -48,79 +48,87 @@ export default function Projects() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 flex items-center gap-4"
+        className="mb-14 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">03</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Work</span>
       </motion.div>
 
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-16 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl"
-      >
-        Featured <span className="gradient-text">Projects</span>
-      </motion.h2>
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between mb-14">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]"
+        >
+          Featured <span className="gradient-text">Projects</span>
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.6 }}
+          className="text-muted max-w-md text-[15px]"
+        >
+          A selection of projects I&apos;ve built that showcase my engineering capabilities.
+        </motion.p>
+      </div>
 
       {/* Projects Grid */}
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {projects.map((project, i) => (
           <motion.article
             key={project.title}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: i * 0.15, duration: 0.6 }}
-            whileHover={{ y: -6 }}
-            className="group relative overflow-hidden rounded-2xl border border-border/30 bg-surface-light/30 transition-all duration-500 hover:border-border/60 hover:shadow-2xl hover:shadow-accent/5"
+            transition={{ delay: i * 0.1, duration: 0.6 }}
+            className="card-premium group relative overflow-hidden"
           >
             {/* Image */}
-            <div className="relative aspect-video overflow-hidden">
+            <div className="relative aspect-[16/10] overflow-hidden">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
+
+              {/* Hover overlay with CTA */}
+              <div className="absolute inset-0 flex items-center justify-center bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <motion.a
+                  href={project.link}
+                  className="rounded-full bg-white/10 px-6 py-2.5 text-sm font-medium text-white backdrop-blur-md border border-white/20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500"
+                >
+                  View Project
+                </motion.a>
+              </div>
             </div>
 
             {/* Content */}
-            <div className="relative p-6 sm:p-8">
-              <h3 className="mb-3 text-xl font-semibold tracking-tight group-hover:text-accent transition-colors">
+            <div className="relative p-6">
+              <h3 className="mb-2 text-lg font-semibold tracking-tight group-hover:text-accent transition-colors duration-300">
                 {project.title}
               </h3>
-              <p className="mb-5 text-sm text-muted leading-relaxed">
+              <p className="mb-5 text-sm text-muted leading-relaxed line-clamp-2">
                 {project.description}
               </p>
 
               {/* Tech Tags */}
-              <div className="mb-5 flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2">
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent"
+                    className="rounded-md bg-accent/8 px-2.5 py-1 text-[11px] font-medium text-accent/80"
                   >
                     {t}
                   </span>
                 ))}
               </div>
-
-              {/* Link */}
-              <motion.a
-                href={project.link}
-                className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 transition-colors hover:text-accent"
-                whileHover={{ x: 4 }}
-              >
-                View Project
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                </svg>
-              </motion.a>
             </div>
           </motion.article>
         ))}
