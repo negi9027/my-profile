@@ -146,7 +146,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Bottom gradient transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent" />
     </section>
   );
 }

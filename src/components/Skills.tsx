@@ -63,7 +63,7 @@ const skillCategories = [
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills">
+    <SectionWrapper id="skills" alternate>
       {/* Section Label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -77,7 +77,7 @@ export default function Skills() {
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Expertise</span>
       </motion.div>
 
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between mb-16">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between mb-14">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

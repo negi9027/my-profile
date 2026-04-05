@@ -19,7 +19,7 @@ export default function Contact() {
   };
 
   return (
-    <SectionWrapper id="contact">
+    <SectionWrapper id="contact" alternate>
       {/* Section Label */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

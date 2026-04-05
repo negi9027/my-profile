@@ -170,6 +170,14 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 80px);
 }
 
+/* ---- Section alternate bg ---- */
+.section-alt {
+  background: var(--color-surface);
+}
+.light .section-alt {
+  background: var(--color-surface-light);
+}
+
 /* ---- Marquee ---- */
 @keyframes marquee {
   0% { transform: translateX(0); }

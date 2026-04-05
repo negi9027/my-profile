@@ -48,7 +48,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-24 items-center">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 lg:gap-20 items-start">
           {/* Image Side — 2 cols */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -58,7 +58,7 @@ export default function About() {
             className="relative lg:col-span-2"
           >
             <motion.div style={{ y: imageY }} className="relative">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?w=800&q=80"
                   alt="Developer workspace"
