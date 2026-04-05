@@ -54,7 +54,7 @@ export default function Experience() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 flex items-center gap-4"
+        className="mb-20 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">05</span>
         <div className="h-[1px] w-12 bg-accent/30" />
@@ -66,13 +66,13 @@ export default function Experience() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]"
+        className="mb-20 text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem]"
       >
         Experience & <span className="gradient-text">Achievements</span>
       </motion.h2>
 
       {/* Metrics */}
-      <div className="mb-24 grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <div className="mb-28 grid grid-cols-2 gap-8 sm:grid-cols-4">
         {achievements.map((item, i) => (
           <motion.div
             key={item.label}
@@ -80,7 +80,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.08, duration: 0.5 }}
-            className="card-premium p-7 text-center sm:p-9"
+            className="card-premium p-8 text-center sm:p-10"
           >
             <div className="text-3xl font-bold gradient-text sm:text-4xl lg:text-5xl">{item.metric}</div>
             <div className="mt-3 text-[11px] text-muted uppercase tracking-widest font-medium">{item.label}</div>
@@ -93,7 +93,7 @@ export default function Experience() {
         {/* Vertical line — centered */}
         <div className="absolute left-5 top-0 bottom-0 w-[1px] bg-gradient-to-b from-accent/30 via-border/30 to-transparent md:left-1/2 md:-translate-x-px" />
 
-        <div className="space-y-14">
+        <div className="space-y-16">
           {experiences.map((exp, i) => (
             <motion.div
               key={exp.year}

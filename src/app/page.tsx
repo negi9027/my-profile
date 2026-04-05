@@ -15,14 +15,12 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      <div className="space-y-0">
-        <About />
-        <Skills />
-        <Projects />
-        <TechStack />
-        <Experience />
-        <Contact />
-      </div>
+      <About />
+      <Skills />
+      <Projects />
+      <TechStack />
+      <Experience />
+      <Contact />
       <Footer />
     </main>
   );

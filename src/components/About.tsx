@@ -37,7 +37,7 @@ export default function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 flex items-center gap-4"
+          className="mb-20 flex items-center gap-4"
         >
           <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">
             01
@@ -48,7 +48,7 @@ export default function About() {
           </span>
         </motion.div>
 
-        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-20 items-center">
+        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-5 lg:gap-24 items-center">
           {/* Image Side — 2 cols */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -84,7 +84,7 @@ export default function About() {
           </motion.div>
 
           {/* Story Side — 3 cols */}
-          <div className="flex flex-col gap-10 lg:col-span-3">
+          <div className="flex flex-col gap-8 lg:col-span-3">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +107,7 @@ export default function About() {
               I&apos;m a full-stack engineer who bridges the gap between elegant interfaces and robust infrastructure. Every solution I build balances form with function.
             </motion.p>
 
-            <div className="space-y-10 mt-4">
+            <div className="space-y-10 mt-6">
               {storyPoints.map((point, i) => (
                 <motion.div
                   key={point.title}
@@ -118,7 +118,7 @@ export default function About() {
                   className="group relative pl-7 border-l-2 border-border/30 hover:border-accent/40 transition-colors duration-300"
                 >
                   <div className="absolute left-0 top-0.5 -translate-x-[calc(50%+1px)] h-2.5 w-2.5 rounded-full border-2 border-accent/60 bg-background group-hover:bg-accent/20 group-hover:border-accent transition-colors duration-300" />
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-accent/80 mb-2">
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-accent/80 mb-3">
                     {point.title}
                   </h3>
                   <p className="text-muted leading-relaxed text-[15px]">{point.text}</p>

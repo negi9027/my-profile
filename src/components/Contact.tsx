@@ -26,14 +26,14 @@ export default function Contact() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="mb-16 flex items-center gap-4"
+        className="mb-20 flex items-center gap-4"
       >
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-accent">06</span>
         <div className="h-[1px] w-12 bg-accent/30" />
         <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted">Connect</span>
       </motion.div>
 
-      <div className="grid gap-16 lg:grid-cols-5 lg:gap-20">
+      <div className="grid gap-20 lg:grid-cols-5 lg:gap-24">
         {/* Left — 2 cols */}
         <div className="lg:col-span-2 flex flex-col justify-between">
           <div>
@@ -106,11 +106,11 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="card-premium lg:col-span-3 p-8 sm:p-10"
+          className="card-premium lg:col-span-3 p-9 sm:p-12"
         >
-          <div className="space-y-6">
+          <div className="space-y-7">
             {/* Name & Email row */}
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="grid gap-7 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className="mb-2.5 block text-[11px] font-semibold uppercase tracking-widest text-muted">
                   Name
